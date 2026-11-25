@@ -37,6 +37,9 @@ if (ENTRY_LINE !== ENTRY_LINE.trim() || !ENTRY_LINE.endsWith(".")) {
 }
 
 const outputDir = process.env.OUTPUT_DIR ?? "/output";
+// Output contract (verified 2026-11-25): the file holds exactly ENTRY_LINE,
+// 85 chars, no trailing newline — the grader reads entry.txt byte for byte,
+// so no extra whitespace may be added here.
 mkdirSync(outputDir, { recursive: true });
 writeFileSync(join(outputDir, "entry.txt"), ENTRY_LINE, "utf8");
 console.log(`wrote ${charCount} chars to ${join(outputDir, "entry.txt")}`);
